@@ -1,34 +1,34 @@
 module.exports = {
   root: true,
-  parser: "@typescript-eslint/parser",
-  parserOptions: {
-    project: ["./tsconfig.json"],
-    tsconfigRootDir: __dirname,
-    ecmaFeatures: { jsx: true },
-  },
   env: {
     browser: true,
-    node: true,
     es2021: true,
   },
-  extends: [
-    "airbnb",
-    "airbnb/hooks",
-    "airbnb-typescript",
-    "plugin:@typescript-eslint/recommended",
-    "plugin:jsx-a11y/recommended",
-    "plugin:import/errors",
-    "plugin:import/warnings",
-    "plugin:import/typescript",
-    "next/core-web-vitals",
-  ],
-  plugins: ["@typescript-eslint", "react", "jsx-a11y", "import"],
-  rules: {
-    "react/react-in-jsx-scope": "off",
-    "react/prop-types": "off",
-    "import/prefer-default-export": "off",
-    // allow dev-only console logs for now
-    "no-console": ["warn", { allow: ["warn", "error", "log"] }],
+  parser: "@typescript-eslint/parser",
+  parserOptions: {
+    ecmaVersion: "latest",
+    sourceType: "module",
+    ecmaFeatures: {
+      jsx: true,
+    },
   },
-  settings: { react: { version: "detect" } },
+  settings: {
+    react: {
+      version: "detect",
+    },
+  },
+  plugins: ["react", "react-hooks", "@typescript-eslint", "jsx-a11y"],
+  extends: [
+    "eslint:recommended",
+    "plugin:react/recommended",
+    "plugin:@typescript-eslint/recommended",
+    "plugin:react-hooks/recommended",
+    "plugin:jsx-a11y/recommended",
+    "prettier",
+  ],
+  rules: {
+    // Твої кастомні правила
+    "react/react-in-jsx-scope": "off", // Next.js / CRA 17+
+    "@typescript-eslint/no-unused-vars": ["warn", { argsIgnorePattern: "^_" }],
+  },
 };

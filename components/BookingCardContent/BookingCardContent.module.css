@@ -13,12 +13,3 @@
   display: flex;
   justify-content: flex-end;
 }
-
-@media (max-width: 720px) {
-  .row {
-    flex-direction: column;
-  }
-  .actions {
-    justify-content: center;
-  }
-}

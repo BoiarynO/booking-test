@@ -1,0 +1,33 @@
+.root {
+  width: 100%;
+}
+
+.slideWrapper {
+  padding: 6px;
+}
+
+.arrow {
+  z-index: 5;
+}
+
+.slick-prev,
+.slick-next {
+  width: 36px;
+  height: 36px;
+  border-radius: 18px;
+  background: #fff;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.12);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.slick-track {
+  display: flex !important;
+  align-items: center;
+}
+
+.slick-slide {
+  display: block !important;
+  float: none !important;
+}
