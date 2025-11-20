@@ -1,0 +1,21 @@
+.root {
+  display: flex;
+  flex-direction: column;
+}
+
+.title {
+  font-size: 22px;
+  margin: 0 0 8px 0;
+}
+
+.desc {
+  margin: 0;
+  color: #444;
+  line-height: 1.4;
+}
+
+@media (min-width: 1024px) {
+  .title {
+    font-size: 26px;
+  }
+}
