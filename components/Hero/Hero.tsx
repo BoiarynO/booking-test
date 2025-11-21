@@ -24,7 +24,7 @@ const Hero = ({
       <DurationLabel />
       <Image
         src={ImageMobile}
-        alt=""
+        alt="woman-image"
         className={styles.image}
         width={300}
         loading="eager"

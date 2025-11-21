@@ -16,7 +16,7 @@ const BookingWrapper: React.FC = () => {
         <div className={styles.upperBlock}>
           <Image
             src={ImageDesktop}
-            alt=""
+            alt="woman-image"
             className={styles.image}
             loading="eager"
           />
