@@ -26,16 +26,7 @@
   background-color: var(--blurBackground);
   filter: blur(50px);
   opacity: 1;
-}
-
-.pageRoot::before {
-  top: -150px;
-  right: -150px;
-}
-
-.pageRoot::after {
-  top: 20vh;
-  left: -150px;
+  display: none;
 }
 
 .pageRoot > * {
@@ -52,6 +43,7 @@
     width: 600px;
     height: 600px;
     filter: blur(150px);
+    display: block;
   }
 
   .pageRoot::before {
@@ -72,6 +64,7 @@
     width: 800px;
     height: 800px;
     filter: blur(180px);
+    display: block;
   }
 
   .pageRoot::before {
