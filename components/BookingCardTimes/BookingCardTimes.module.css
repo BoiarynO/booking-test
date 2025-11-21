@@ -1,13 +1,13 @@
 .root {
-  padding: 0px 12px;
   width: 100%;
   margin: 0 auto;
 }
 
 .slideWrapper {
   display: flex;
-  align-items: center;
-  justify-content: center;
+  flex-direction: column;
+  justify-content: flex-end;
+  align-items: flex-start;
 }
 
 .button {
@@ -52,4 +52,12 @@
   cursor: default;
   pointer-events: none;
   opacity: 0.9;
+}
+
+@media (min-width: 568px) {
+  .root {
+    padding: 0px 12px;
+    width: 100%;
+    margin: 0 auto;
+  }
 }

@@ -1,10 +1,12 @@
 .root {
   width: 100%;
-  padding: 0px 24px;
 }
 
-.slideWrapper {
-  padding: 6px;
+@media (min-width: 568px) {
+  .root {
+    width: 100%;
+    padding: 0px 24px;
+  }
 }
 
 .arrow {
@@ -28,16 +30,6 @@
   right: -44px;
   top: 50%;
   transform: translateY(-50%);
-}
-
-.slick-track {
-  display: flex !important;
-  align-items: center;
-}
-
-.slick-slide {
-  display: block !important;
-  float: none !important;
 }
 
 :global(.slick-prev),

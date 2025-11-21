@@ -36,7 +36,23 @@ const BookingCardTimes: React.FC = () => {
 
   return (
     <div className={styles.root}>
-      <Carousel items={items} slidesToShow={5} slidesToScroll={5} />
+      <Carousel
+        items={items}
+        slidesToShow={5}
+        slidesToScroll={2}
+        customSettings={{
+          responsive: [
+            {
+              breakpoint: 568,
+              settings: {
+                slidesToShow: 4.2,
+                slidesToScroll: 1,
+                arrows: false,
+              },
+            },
+          ],
+        }}
+      />
     </div>
   );
 };

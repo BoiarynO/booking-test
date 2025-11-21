@@ -1,5 +1,4 @@
 .root {
-  padding: 0px 12px;
   width: 100%;
   margin: 0 auto;
 }
@@ -82,4 +81,12 @@
 .prevArrow,
 .nextArrow {
   top: 60px !important;
+}
+
+@media (min-width: 568px) {
+  .root {
+    padding: 0px 12px;
+    width: 100%;
+    margin: 0 auto;
+  }
 }

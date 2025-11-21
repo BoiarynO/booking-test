@@ -1,0 +1,22 @@
+.durationLabel {
+  width: fit-content;
+  display: flex;
+  gap: 8px;
+  padding: 8px;
+  border-radius: 100px;
+  align-items: center;
+  justify-content: center;
+  background: #ffffff29;
+  backdrop-filter: blur(120px);
+}
+
+.durationLabel p {
+  font-family: Poppins;
+  font-weight: 400;
+  font-style: Regular;
+  font-size: 13px;
+  line-height: 100%;
+  letter-spacing: 0px;
+  vertical-align: middle;
+  color: var(--commonWhite);
+}

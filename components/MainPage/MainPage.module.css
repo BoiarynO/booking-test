@@ -4,6 +4,7 @@
   flex-direction: column;
   position: relative;
   overflow: hidden;
+  justify-content: flex-end;
 }
 
 .mainArea {
@@ -12,7 +13,6 @@
   align-items: center;
   justify-content: center;
   overflow: hidden;
-  padding: 50px 0px;
   background: transparent;
 }
 
@@ -20,27 +20,50 @@
 .pageRoot::after {
   content: "";
   position: absolute;
-  width: 600px;
-  height: 600px;
+  width: 300px;
+  height: 300px;
   border-radius: 50%;
   background-color: var(--blurBackground);
-  filter: blur(150px);
+  filter: blur(50px);
   opacity: 1;
 }
 
 .pageRoot::before {
-  top: -100px;
-  right: -100px;
+  top: -150px;
+  right: -150px;
 }
 
 .pageRoot::after {
-  bottom: -100px;
-  left: -100px;
+  top: 20vh;
+  left: -150px;
 }
 
 .pageRoot > * {
   position: relative;
   z-index: 1;
+}
+
+@media (min-width: 568px) {
+  .pageRoot {
+    justify-content: inherit;
+  }
+  .pageRoot::before,
+  .pageRoot::after {
+    width: 600px;
+    height: 600px;
+    filter: blur(150px);
+  }
+
+  .pageRoot::before {
+    top: -100px;
+    right: -100px;
+  }
+
+  .pageRoot::after {
+    top: inherit;
+    bottom: -100px;
+    left: -100px;
+  }
 }
 
 @media (min-width: 1600px) {
@@ -57,6 +80,7 @@
   }
 
   .pageRoot::after {
+    top: inherit;
     bottom: -150px;
     left: -150px;
   }

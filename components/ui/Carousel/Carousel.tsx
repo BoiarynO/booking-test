@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import Slider, { Settings } from "react-slick";
 
 import "slick-carousel/slick/slick.css";
@@ -15,6 +15,7 @@ type CarouselProps = {
   className?: string;
   nextArrowClassname?: string;
   prevArrowClassname?: string;
+  customSettings?: Settings;
 };
 
 type ArrowProps = {
@@ -93,11 +94,12 @@ const PrevArrow: React.FC<ArrowProps> = ({
 const Carousel: React.FC<CarouselProps> = ({
   items,
   slidesToShow = 6,
-  slidesToScroll = 6,
-  speed = 1000,
+  slidesToScroll = 3,
+  speed = 300,
   className = "",
   prevArrowClassname = "",
   nextArrowClassname = "",
+  customSettings = {},
 }) => {
   const settings: Settings = {
     className,
@@ -108,8 +110,20 @@ const Carousel: React.FC<CarouselProps> = ({
     slidesToScroll,
     swipeToSlide: true,
     draggable: true,
+    swipe: true,
     nextArrow: <NextArrow customClassName={nextArrowClassname} />,
     prevArrow: <PrevArrow customClassName={prevArrowClassname} />,
+    responsive: [
+      {
+        breakpoint: 568,
+        settings: {
+          slidesToShow: 5.2,
+          slidesToScroll: 1,
+          arrows: false,
+        },
+      },
+    ],
+    ...customSettings,
   };
 
   return (
