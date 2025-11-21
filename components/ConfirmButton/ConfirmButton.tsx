@@ -20,7 +20,7 @@ const ConfirmButton: React.FC = () => {
       disabled={!selectedTime}
       onClick={clickHandler}
     >
-      Confirm
+      <p>Confirm</p>
     </button>
   );
 };

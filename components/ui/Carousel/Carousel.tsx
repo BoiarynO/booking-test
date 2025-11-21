@@ -12,81 +12,95 @@ type CarouselProps = {
   slidesToScroll?: number;
   rtl?: boolean;
   speed?: number;
+  className?: string;
+  nextArrowClassname?: string;
+  prevArrowClassname?: string;
 };
 
 type ArrowProps = {
   className?: string;
   style?: React.CSSProperties;
   onClick?: React.MouseEventHandler<HTMLButtonElement>;
+  customClassName?: string;
 };
 
 const NextArrow: React.FC<ArrowProps> = ({
   className = "",
   style,
   onClick,
-}) => (
-  <button
-    type="button"
-    className={`${className} ${styles.arrow} ${styles.next}`}
-    style={{ ...style }}
-    onClick={onClick}
-    aria-label="Next"
-  >
-    <svg
-      width="14"
-      height="14"
-      viewBox="0 0 24 24"
-      fill="none"
-      xmlns="http://www.w3.org/2000/svg"
+  customClassName = "",
+}) => {
+  const disabled = className?.includes("slick-disabled");
+
+  return (
+    <button
+      type="button"
+      className={`${styles.arrow} ${styles.next} ${customClassName}`}
+      style={{ ...style }}
+      onClick={onClick}
+      aria-label="Next"
+      disabled={disabled}
     >
-      <path
-        d="M8 4l8 8-8 8"
-        stroke="#333"
-        strokeWidth="2"
-        strokeLinecap="round"
-        strokeLinejoin="round"
-      />
-    </svg>
-  </button>
-);
+      <svg
+        width="24"
+        height="24"
+        viewBox="0 -1 24 24"
+        fill="none"
+        xmlns="http://www.w3.org/2000/svg"
+      >
+        <path
+          d="M8 4 L15 11 L8 18"
+          stroke={disabled ? "#C0C1D1" : "#16171B"}
+          strokeWidth="1"
+        />
+      </svg>
+    </button>
+  );
+};
 
 const PrevArrow: React.FC<ArrowProps> = ({
   className = "",
   style,
   onClick,
-}) => (
-  <button
-    type="button"
-    className={`${className} ${styles.arrow} ${styles.prev}`}
-    style={{ ...style }}
-    onClick={onClick}
-    aria-label="Previous"
-  >
-    <svg
-      width="14"
-      height="14"
-      viewBox="0 0 24 24"
-      fill="none"
-      xmlns="http://www.w3.org/2000/svg"
+  customClassName = "",
+}) => {
+  const disabled = className?.includes("slick-disabled");
+  return (
+    <button
+      type="button"
+      className={`${styles.arrow} ${styles.prev} ${customClassName}`}
+      style={{ ...style }}
+      onClick={onClick}
+      aria-label="Previous"
+      disabled={disabled}
     >
-      <path
-        d="M16 4l-8 8 8 8"
-        stroke="#333"
-        strokeWidth="2"
-        strokeLinecap="round"
-        strokeLinejoin="round"
-      />
-    </svg>
-  </button>
-);
-
+      <svg
+        width="24"
+        height="24"
+        viewBox="0 -1 24 24"
+        fill="none"
+        xmlns="http://www.w3.org/2000/svg"
+      >
+        <path
+          d="M16 4 L9 11 L16 18"
+          stroke={disabled ? "#C0C1D1" : "#16171B"}
+          strokeWidth="1"
+        />
+      </svg>
+    </button>
+  );
+};
 const Carousel: React.FC<CarouselProps> = ({
   items,
   slidesToShow = 6,
   slidesToScroll = 6,
   speed = 1000,
+  className = "",
+  prevArrowClassname = "",
+  nextArrowClassname = "",
 }) => {
   const settings: Settings = {
+    className,
     dots: false,
     infinite: false,
     speed,
@@ -94,8 +108,8 @@ const Carousel: React.FC<CarouselProps> = ({
     slidesToScroll,
     swipeToSlide: true,
     draggable: true,
-    nextArrow: <NextArrow />,
-    prevArrow: <PrevArrow />,
+    nextArrow: <NextArrow customClassName={nextArrowClassname} />,
+    prevArrow: <PrevArrow customClassName={prevArrowClassname} />,
   };
 
   return (

@@ -5,11 +5,14 @@
 }
 
 .column {
-  display: grid;
+  display: flex;
+  flex-direction: column;
   gap: 16px;
+  margin-bottom: 100px;
 }
 
 .actions {
   display: flex;
-  justify-content: flex-end;
+  justify-content: center;
+  padding: 16px 74px;
 }

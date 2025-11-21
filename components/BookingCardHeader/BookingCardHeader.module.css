@@ -1,17 +1,28 @@
 .root {
-  display: flex;
-  flex-direction: column;
+  display: grid;
+  gap: 14px;
 }
 
 .title {
-  font-size: 22px;
-  margin: 0 0 8px 0;
+  font-family: Kaisei Tokumin;
+  font-weight: 700;
+  font-style: Bold;
+  font-size: 28px;
+  line-height: 100%;
+  letter-spacing: 0%;
+  vertical-align: middle;
+  color: var(--primary-text-color);
 }
 
-.desc {
-  margin: 0;
-  color: #444;
-  line-height: 1.4;
+.subtitle {
+  font-family: Poppins;
+  font-weight: 400;
+  font-style: Regular;
+  font-size: 14px;
+  line-height: 100%;
+  letter-spacing: 0%;
+  vertical-align: middle;
+  color: var(--secondary-text-color);
 }
 
 @media (min-width: 1024px) {

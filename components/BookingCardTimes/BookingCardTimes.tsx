@@ -24,10 +24,8 @@ const BookingCardTimes: React.FC = () => {
     return (
       <div key={value} className={styles.slideWrapper}>
         <button
-          className={clsx(styles.slide, { [styles.active]: active })}
+          className={clsx(styles.button, { [styles.active]: active })}
           disabled={disabled}
-          // aria-pressed={active}
-          // data-active={active}
           onClick={() => !disabled && setSelectedTime(timestamp)}
         >
           <div className={styles.label}>{label}</div>
@@ -38,7 +36,7 @@ const BookingCardTimes: React.FC = () => {
 
   return (
     <div className={styles.root}>
-      <Carousel items={items} />
+      <Carousel items={items} slidesToShow={5} slidesToScroll={5} />
     </div>
   );
 };
