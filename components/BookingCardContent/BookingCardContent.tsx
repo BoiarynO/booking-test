@@ -12,6 +12,7 @@ const BookingCardContent: React.FC = () => {
       <div className={styles.column}>
         <BookingCardDates />
         <BookingCardTimes />
+        <div className={styles.fadeOverlay}></div>
       </div>
 
       <div className={styles.actions}>
