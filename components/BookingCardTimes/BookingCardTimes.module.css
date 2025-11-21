@@ -51,7 +51,7 @@
   color: var(--secondary-text-color);
   cursor: default;
   pointer-events: none;
-  opacity: 0.9;
+  opacity: 0.3;
 }
 
 @media (min-width: 568px) {
