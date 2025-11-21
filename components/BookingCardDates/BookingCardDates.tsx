@@ -1,10 +1,12 @@
-import styles from "./BookingCardDates.module.css";
 import React, { useMemo } from "react";
+import classnames from "classnames";
+
 import useBookingStore, { BookingState } from "@/state/useBookingStore";
+import { getDatesArray } from "@/utils/getDatesArray";
 
 import Carousel from "../ui/Carousel/Carousel";
-import { getDatesArray } from "@/utils/getDatesArray";
-import classnames from "classnames";
+
+import styles from "./BookingCardDates.module.css";
 
 const BookingCardDates: React.FC = () => {
   const selected = useBookingStore((s: BookingState) => s.selectedDateId);

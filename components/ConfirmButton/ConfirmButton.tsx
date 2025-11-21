@@ -1,9 +1,11 @@
 import React from "react";
-import styles from "./ConfirmButton.module.css";
-import useBookingStore from "@/state/useBookingStore";
 import { format } from "date-fns";
 
-const ConfirmButton: React.FC = () => {
+import useBookingStore from "@/state/useBookingStore";
+
+import styles from "./ConfirmButton.module.css";
+
+const ConfirmButton: React.FC = ({ label = "Confirm" }: { label?: string }) => {
   const selectedTime = useBookingStore((s) => s.selectedTime ?? 0);
 
   const clickHandler = () => {
@@ -20,7 +22,7 @@ const ConfirmButton: React.FC = () => {
       disabled={!selectedTime}
       onClick={clickHandler}
     >
-      <p>Confirm</p>
+      <p>{label}</p>
     </button>
   );
 };

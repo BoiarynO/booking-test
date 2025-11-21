@@ -1,4 +1,5 @@
 import Image from "next/image";
+
 import Clock from "@/assets/icons/clock.svg";
 
 import styles from "./DurationLabel.module.css";

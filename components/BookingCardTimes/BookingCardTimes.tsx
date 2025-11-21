@@ -1,9 +1,12 @@
 import React, { useMemo } from "react";
 import clsx from "clsx";
-import styles from "./BookingCardTimes.module.css";
+
 import { getTimeSlots } from "@/utils/getTimeSlots";
 import useBookingStore, { BookingState } from "@/state/useBookingStore";
+
 import Carousel from "../ui/Carousel/Carousel";
+
+import styles from "./BookingCardTimes.module.css";
 
 const BookingCardTimes: React.FC = () => {
   const selectedDateId = useBookingStore(

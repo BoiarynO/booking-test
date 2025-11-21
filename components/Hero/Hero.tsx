@@ -1,16 +1,25 @@
 import Image from "next/image";
-import DurationLabel from "../ui/DurationLabel";
 
 import ImageMobile from "@/assets/images/ImageMobile.webp";
 
+import DurationLabel from "../ui/DurationLabel";
+
 import styles from "./Hero.module.css";
 
-const Hero = () => {
+type HeroProps = {
+  title?: string;
+  subtitle?: string;
+};
+
+const Hero = ({
+  title = "Cool session",
+  subtitle = "Additional type",
+}: HeroProps) => {
   return (
     <div className={styles.hero}>
       <div className={styles.description}>
-        <h1 className={styles.title}>Cool session</h1>
-        <p className={styles.subtitle}>Additional type</p>
+        <h1 className={styles.title}>{title}</h1>
+        <p className={styles.subtitle}>{subtitle}</p>
       </div>
       <DurationLabel />
       <Image

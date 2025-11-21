@@ -1,12 +1,13 @@
 import React from "react";
-import BookingCardHeader from "../BookingCardHeader";
-import BookingCardContent from "../BookingCardContent";
-import styles from "./BookingWrapper.module.css";
-import Container from "../ui/Container/Container";
+import Image from "next/image";
 
 import ImageDesktop from "@/assets/images/ImageDesktop.webp";
 
-import Image from "next/image";
+import BookingCardHeader from "../BookingCardHeader";
+import BookingCardContent from "../BookingCardContent";
+import Container from "../ui/Container/Container";
+
+import styles from "./BookingWrapper.module.css";
 
 const BookingWrapper: React.FC = () => {
   return (
