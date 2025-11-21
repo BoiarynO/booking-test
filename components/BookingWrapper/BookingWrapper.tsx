@@ -13,7 +13,12 @@ const BookingWrapper: React.FC = () => {
     <Container className={styles.wrapper}>
       <div className={styles.card}>
         <div className={styles.upperBlock}>
-          <Image src={ImageDesktop} alt="" className={styles.image} />
+          <Image
+            src={ImageDesktop}
+            alt=""
+            className={styles.image}
+            loading="eager"
+          />
           <div className={styles.headerArea}>
             <BookingCardHeader />
           </div>

@@ -13,7 +13,13 @@ const Hero = () => {
         <p className={styles.subtitle}>Additional type</p>
       </div>
       <DurationLabel />
-      <Image src={ImageMobile} alt="" className={styles.image} width={300} />
+      <Image
+        src={ImageMobile}
+        alt=""
+        className={styles.image}
+        width={300}
+        loading="eager"
+      />
     </div>
   );
 };
