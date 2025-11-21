@@ -16,6 +16,7 @@ type CarouselProps = {
   nextArrowClassname?: string;
   prevArrowClassname?: string;
   customSettings?: Settings;
+  arrows?: boolean;
 };
 
 type ArrowProps = {
@@ -100,6 +101,7 @@ const Carousel: React.FC<CarouselProps> = ({
   prevArrowClassname = "",
   nextArrowClassname = "",
   customSettings = {},
+  arrows = true,
 }) => {
   const settings: Settings = {
     className,
@@ -113,16 +115,7 @@ const Carousel: React.FC<CarouselProps> = ({
     swipe: true,
     nextArrow: <NextArrow customClassName={nextArrowClassname} />,
     prevArrow: <PrevArrow customClassName={prevArrowClassname} />,
-    responsive: [
-      {
-        breakpoint: 568,
-        settings: {
-          slidesToShow: 5.2,
-          slidesToScroll: 1,
-          arrows: false,
-        },
-      },
-    ],
+    arrows,
     ...customSettings,
   };
 

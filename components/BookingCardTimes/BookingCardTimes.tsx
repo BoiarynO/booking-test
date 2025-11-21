@@ -1,4 +1,5 @@
-import React, { useMemo } from "react";
+"use client";
+import React, { useEffect, useMemo, useState } from "react";
 import clsx from "clsx";
 
 import { getTimeSlots } from "@/utils/getTimeSlots";
@@ -9,6 +10,8 @@ import Carousel from "../ui/Carousel/Carousel";
 import styles from "./BookingCardTimes.module.css";
 
 const BookingCardTimes: React.FC = () => {
+  const [width, setWidth] = useState<number>(0);
+
   const selectedDateId = useBookingStore(
     (s: BookingState) => s.selectedDateId ?? 0
   );
@@ -16,6 +19,22 @@ const BookingCardTimes: React.FC = () => {
   const setSelectedTime = useBookingStore(
     (s: BookingState) => s.setSelectedTime
   );
+
+  useEffect(() => {
+    const handleResize = () => {
+      const width = typeof window !== "undefined" ? window.innerWidth : 0;
+      setWidth(width);
+    };
+    const width = typeof window !== "undefined" ? window.innerWidth : 0;
+
+    // eslint-disable-next-line react-hooks/set-state-in-effect
+    setWidth(width);
+
+    window.addEventListener("resize", handleResize);
+    return () => {
+      window.removeEventListener("resize", handleResize);
+    };
+  }, []);
 
   const timeSlots = useMemo(() => {
     const selectedDate = new Date(selectedDateId);
@@ -37,24 +56,17 @@ const BookingCardTimes: React.FC = () => {
     );
   });
 
+  const slidesToShow = width < 568 ? 4.2 : 5;
+  const slidesToScroll = width < 568 ? 1 : 2;
+  const arrows = width > 568;
+
   return (
     <div className={styles.root}>
       <Carousel
         items={items}
-        slidesToShow={5}
-        slidesToScroll={2}
-        customSettings={{
-          responsive: [
-            {
-              breakpoint: 568,
-              settings: {
-                slidesToShow: 4.2,
-                slidesToScroll: 1,
-                arrows: false,
-              },
-            },
-          ],
-        }}
+        slidesToShow={slidesToShow}
+        slidesToScroll={slidesToScroll}
+        arrows={arrows}
       />
     </div>
   );
