@@ -1,38 +1,22 @@
-import React, { useEffect, useMemo, useState } from "react";
+import React, { useMemo } from "react";
 import classnames from "classnames";
 
 import useBookingStore, { BookingState } from "@/state/useBookingStore";
 import { getDatesArray } from "@/utils/getDatesArray";
+import useWindowWidth from "@/utils/hooks/useWindowWidth";
 
 import ScrollCarousel from "../ui/ScrollCarousel/ScrollCarousel";
 
-import styles from "./BookingCardDates.module.css";
+import styles from "./BookingCardDateSlots.module.css";
 
-const BookingCardDates: React.FC = () => {
-  const [width, setWidth] = useState<number>(0);
+const BookingCardDateSlots: React.FC = () => {
+  const width = useWindowWidth();
 
   const selected = useBookingStore((s: BookingState) => s.selectedDateId);
   const setSelected = useBookingStore((s: BookingState) => s.setSelectedDate);
   const setSelectedTime = useBookingStore(
     (s: BookingState) => s.setSelectedTime
   );
-
-  useEffect(() => {
-    const handleResize = () => {
-      const width = typeof window !== "undefined" ? window.innerWidth : 0;
-
-      setWidth(width);
-    };
-
-    const width = typeof window !== "undefined" ? window.innerWidth : 0;
-    // eslint-disable-next-line react-hooks/set-state-in-effect
-    setWidth(width);
-
-    window.addEventListener("resize", handleResize);
-    return () => {
-      window.removeEventListener("resize", handleResize);
-    };
-  }, []);
 
   const dates = useMemo(() => getDatesArray(), []);
 
@@ -85,4 +69,4 @@ const BookingCardDates: React.FC = () => {
   );
 };
 
-export default BookingCardDates;
+export default BookingCardDateSlots;

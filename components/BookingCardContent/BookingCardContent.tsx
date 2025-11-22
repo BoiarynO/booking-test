@@ -1,7 +1,7 @@
 import React from "react";
 
-import BookingCardDates from "../BookingCardDates";
-import BookingCardTimes from "../BookingCardTimes";
+import BookingCardDateSlots from "../BookingCardDateSlots";
+import BookingCardTimeSlots from "../BookingCardTimeSlots";
 import ConfirmButton from "../ConfirmButton";
 
 import styles from "./BookingCardContent.module.css";
@@ -10,8 +10,8 @@ const BookingCardContent: React.FC = () => {
   return (
     <div className={styles.contentRoot}>
       <div className={styles.column}>
-        <BookingCardDates />
-        <BookingCardTimes />
+        <BookingCardDateSlots />
+        <BookingCardTimeSlots />
         <div className={styles.fadeOverlay}></div>
       </div>
 

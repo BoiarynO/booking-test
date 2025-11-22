@@ -35,6 +35,7 @@ export const ScrollCarousel: React.FC<ScrollCarouselProps> = ({
 
   const autoGap = useAutoGap(wrapperRef, firstItem, slidesToShow);
   const gap = autoGap ?? 12;
+  const lastItemMargin = gap * 2;
 
   const { onMouseDown, onMouseMove, endDrag } = useDragScroll(wrapperRef);
 
@@ -112,7 +113,8 @@ export const ScrollCarousel: React.FC<ScrollCarouselProps> = ({
               key={i}
               className={styles.item}
               style={{
-                marginRight: i === items.length - 1 && arrows ? gap : 0,
+                marginRight:
+                  i === items.length - 1 && !arrows ? lastItemMargin : 0,
               }}
               ref={setItemRef(i)}
             >

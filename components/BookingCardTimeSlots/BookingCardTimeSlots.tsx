@@ -1,15 +1,16 @@
-import React, { useEffect, useMemo, useState } from "react";
-import clsx from "clsx";
+import React, { useMemo } from "react";
 
 import { getTimeSlots } from "@/utils/getTimeSlots";
 import useBookingStore, { BookingState } from "@/state/useBookingStore";
+import useWindowWidth from "@/utils/hooks/useWindowWidth";
 
 import ScrollCarousel from "../ui/ScrollCarousel/ScrollCarousel";
 
-import styles from "./BookingCardTimes.module.css";
+import styles from "./BookingCardTimeSlots.module.css";
+import TimeSlot from "./TimeSlot";
 
-const BookingCardTimes: React.FC = () => {
-  const [width, setWidth] = useState<number>(0);
+const BookingCardTimeSlots: React.FC = () => {
+  const width = useWindowWidth();
 
   const selectedDateId = useBookingStore(
     (s: BookingState) => s.selectedDateId ?? 0
@@ -19,22 +20,6 @@ const BookingCardTimes: React.FC = () => {
     (s: BookingState) => s.setSelectedTime
   );
 
-  useEffect(() => {
-    const handleResize = () => {
-      const width = typeof window !== "undefined" ? window.innerWidth : 0;
-      setWidth(width);
-    };
-    const width = typeof window !== "undefined" ? window.innerWidth : 0;
-
-    // eslint-disable-next-line react-hooks/set-state-in-effect
-    setWidth(width);
-
-    window.addEventListener("resize", handleResize);
-    return () => {
-      window.removeEventListener("resize", handleResize);
-    };
-  }, []);
-
   const timeSlots = useMemo(() => {
     const selectedDate = new Date(selectedDateId);
     return getTimeSlots(selectedDate);
@@ -43,15 +28,10 @@ const BookingCardTimes: React.FC = () => {
   const items = timeSlots.map(({ label, value, disabled, timestamp }) => {
     const active = selectedTime === timestamp;
     return (
-      <div key={value} className={styles.slideWrapper}>
-        <button
-          className={clsx(styles.button, { [styles.active]: active })}
-          disabled={disabled}
-          onClick={() => !disabled && setSelectedTime(timestamp)}
-        >
-          <div className={styles.label}>{label}</div>
-        </button>
-      </div>
+      <TimeSlot
+        key={value}
+        {...{ label, value, disabled, active, setSelectedTime, timestamp }}
+      />
     );
   });
 
@@ -71,4 +51,4 @@ const BookingCardTimes: React.FC = () => {
   );
 };
 
-export default BookingCardTimes;
+export default BookingCardTimeSlots;
