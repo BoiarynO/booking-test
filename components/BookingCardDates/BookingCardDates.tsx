@@ -7,6 +7,7 @@ import { getDatesArray } from "@/utils/getDatesArray";
 import Carousel from "../ui/Carousel/Carousel";
 
 import styles from "./BookingCardDates.module.css";
+import ScrollCarousel from "../ui/ScrollCarousel/ScrollCarousel";
 
 const BookingCardDates: React.FC = () => {
   const [width, setWidth] = useState<number>(0);
@@ -68,16 +69,18 @@ const BookingCardDates: React.FC = () => {
   });
 
   const slidesToShow = width < 568 ? 5.2 : 6;
+  const slidesToScroll = width < 568 ? 1 : 3;
   const arrows = width > 568;
 
   return (
     <div className={styles.root}>
-      <Carousel
+      <ScrollCarousel
         items={items}
         slidesToShow={slidesToShow}
+        slidesToScroll={slidesToScroll}
         arrows={arrows}
-        prevArrowClassname={styles.prevArrow}
-        nextArrowClassname={styles.nextArrow}
+        // prevArrowClassname={styles.prevArrow}
+        // nextArrowClassname={styles.nextArrow}
       />
     </div>
   );

@@ -1,0 +1,40 @@
+.root {
+  display: flex;
+  align-items: center;
+  width: 100%;
+  gap: 12px;
+}
+
+.arrow {
+  border-radius: 6px;
+  background: transparent;
+  border: none;
+  cursor: pointer;
+  font-size: 18px;
+  transition: 0.2s ease;
+}
+
+.disabled {
+  opacity: 0.3;
+  cursor: default;
+}
+
+.track {
+  overflow: hidden;
+  flex: 1;
+  cursor: grab;
+}
+
+.track:active {
+  cursor: grabbing;
+}
+
+.inner {
+  display: flex;
+  flex-direction: row;
+  width: max-content;
+}
+
+.item {
+  flex-shrink: 0;
+}

@@ -1,6 +1,6 @@
 .root {
   width: 100%;
-  margin: 0 auto;
+  /* margin: 0 auto; */
 }
 
 .slideWrapper {
@@ -85,7 +85,7 @@
 
 @media (min-width: 568px) {
   .root {
-    padding: 0px 12px;
+    /* padding: 0px 12px; */
     width: 100%;
     margin: 0 auto;
   }

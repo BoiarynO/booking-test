@@ -113,6 +113,7 @@ const Carousel: React.FC<CarouselProps> = ({
     swipeToSlide: true,
     draggable: true,
     swipe: true,
+    touchThreshold: 100,
     nextArrow: <NextArrow customClassName={nextArrowClassname} />,
     prevArrow: <PrevArrow customClassName={prevArrowClassname} />,
     arrows,
