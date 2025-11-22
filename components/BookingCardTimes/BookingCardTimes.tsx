@@ -1,14 +1,12 @@
-"use client";
 import React, { useEffect, useMemo, useState } from "react";
 import clsx from "clsx";
 
 import { getTimeSlots } from "@/utils/getTimeSlots";
 import useBookingStore, { BookingState } from "@/state/useBookingStore";
 
-import Carousel from "../ui/Carousel/Carousel";
+import ScrollCarousel from "../ui/ScrollCarousel/ScrollCarousel";
 
 import styles from "./BookingCardTimes.module.css";
-import ScrollCarousel from "../ui/ScrollCarousel/ScrollCarousel";
 
 const BookingCardTimes: React.FC = () => {
   const [width, setWidth] = useState<number>(0);

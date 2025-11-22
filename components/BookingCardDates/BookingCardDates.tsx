@@ -4,10 +4,9 @@ import classnames from "classnames";
 import useBookingStore, { BookingState } from "@/state/useBookingStore";
 import { getDatesArray } from "@/utils/getDatesArray";
 
-import Carousel from "../ui/Carousel/Carousel";
+import ScrollCarousel from "../ui/ScrollCarousel/ScrollCarousel";
 
 import styles from "./BookingCardDates.module.css";
-import ScrollCarousel from "../ui/ScrollCarousel/ScrollCarousel";
 
 const BookingCardDates: React.FC = () => {
   const [width, setWidth] = useState<number>(0);

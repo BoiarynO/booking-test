@@ -5,7 +5,7 @@ import ImageDesktop from "@/assets/images/ImageDesktop.webp";
 
 import BookingCardHeader from "../BookingCardHeader";
 import BookingCardContent from "../BookingCardContent";
-import Container from "../ui/Container/Container";
+import Container from "../ui/Container";
 
 import styles from "./BookingWrapper.module.css";
 

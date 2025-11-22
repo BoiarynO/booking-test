@@ -1,4 +1,5 @@
 import React, { useRef, useEffect, useState, useCallback } from "react";
+
 import styles from "./ScrollCarousel.module.css";
 
 type ScrollCarouselProps = {
@@ -191,8 +192,15 @@ export const ScrollCarousel: React.FC<ScrollCarouselProps> = ({
             <div
               key={i}
               className={styles.item}
-              style={{ marginRight: i === items.length - 1 ? effectiveGap : 0 }}
-              ref={(el: HTMLDivElement) => el && (itemRefs.current[i] = el)}
+              style={{
+                marginRight:
+                  i === items.length - 1 && arrows ? effectiveGap : 0,
+              }}
+              ref={(el: HTMLDivElement) => {
+                if (el) {
+                  itemRefs.current[i] = el;
+                }
+              }}
             >
               {el}
             </div>
