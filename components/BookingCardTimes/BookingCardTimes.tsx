@@ -8,6 +8,7 @@ import useBookingStore, { BookingState } from "@/state/useBookingStore";
 import Carousel from "../ui/Carousel/Carousel";
 
 import styles from "./BookingCardTimes.module.css";
+import ScrollCarousel from "../ui/ScrollCarousel/ScrollCarousel";
 
 const BookingCardTimes: React.FC = () => {
   const [width, setWidth] = useState<number>(0);
@@ -62,7 +63,7 @@ const BookingCardTimes: React.FC = () => {
 
   return (
     <div className={styles.root}>
-      <Carousel
+      <ScrollCarousel
         items={items}
         slidesToShow={slidesToShow}
         slidesToScroll={slidesToScroll}

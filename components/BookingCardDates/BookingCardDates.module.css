@@ -80,7 +80,7 @@
 
 .prevArrow,
 .nextArrow {
-  top: 60px !important;
+  transform: translateY(12px);
 }
 
 @media (min-width: 568px) {

@@ -68,7 +68,7 @@ const BookingCardDates: React.FC = () => {
     );
   });
 
-  const slidesToShow = width < 568 ? 5.2 : 6;
+  const slidesToShow = width < 568 ? 5.3 : 6;
   const slidesToScroll = width < 568 ? 1 : 3;
   const arrows = width > 568;
 
@@ -79,8 +79,8 @@ const BookingCardDates: React.FC = () => {
         slidesToShow={slidesToShow}
         slidesToScroll={slidesToScroll}
         arrows={arrows}
-        // prevArrowClassname={styles.prevArrow}
-        // nextArrowClassname={styles.nextArrow}
+        prevArrowClassname={styles.prevArrow}
+        nextArrowClassname={styles.nextArrow}
       />
     </div>
   );
