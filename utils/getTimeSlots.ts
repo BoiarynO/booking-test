@@ -1,9 +1,9 @@
 import { format, isBefore } from "date-fns";
 
 export type TimeSlot = {
-  label: string; // "09:15 AM"
-  value: string; // "2025-11-20T09:15:00.000Z"
-  disabled: boolean; // true/false
+  label: string;
+  value: string;
+  disabled: boolean;
   timestamp: number;
 };
 
@@ -16,11 +16,9 @@ export const getTimeSlots = (
   const slots: TimeSlot[] = [];
   const now = new Date();
 
-  // початок робочого дня
   const start = new Date(date);
   start.setHours(startHour, 0, 0, 0);
 
-  // кінець робочого дня
   const end = new Date(date);
   end.setHours(endHour, 0, 0, 0);
 
@@ -36,7 +34,6 @@ export const getTimeSlots = (
       timestamp: current.getTime(),
     });
 
-    // додаємо інтервал
     current = new Date(current.getTime() + intervalMinutes * 60000);
   }
 

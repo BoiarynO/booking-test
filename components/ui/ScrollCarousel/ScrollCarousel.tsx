@@ -1,10 +1,20 @@
-import React, { useRef, useState, useCallback } from "react";
+import React, {
+  useRef,
+  useState,
+  useCallback,
+  useMemo,
+  useEffect,
+} from "react";
 
 import styles from "./ScrollCarousel.module.css";
 import { NextArrow, PrevArrow } from "./components/Arrows";
 import { useAutoGap } from "./hooks/useAitoGap";
 import { useDragScroll } from "./hooks/useDragScroll";
 import { useMeasurements } from "./hooks/useMeasurements";
+import { throttle } from "@/utils/throttle";
+import findNearestItemInArray from "@/utils/findNearestItemInArray";
+import { getScrollScale } from "./getScrollScale";
+import useScrollSnapToItem from "./hooks/useScrollSnapToItem";
 
 type ScrollCarouselProps = {
   items: React.ReactNode[];
@@ -33,13 +43,22 @@ export const ScrollCarousel: React.FC<ScrollCarouselProps> = ({
 
   const [firstItem, setFirstItem] = useState<HTMLDivElement | null>(null);
 
-  const autoGap = useAutoGap(wrapperRef, firstItem, slidesToShow);
+  const [itemWidth, autoGap] = useAutoGap(wrapperRef, firstItem, slidesToShow);
   const gap = autoGap ?? 12;
   const lastItemMargin = gap * 2;
 
   const { onMouseDown, onMouseMove, endDrag } = useDragScroll(wrapperRef);
 
-  // геттер ширин (стабільний завдяки useCallback)
+  const throttledSetScroll = useMemo(
+    () => throttle((value: number) => setScrollPos(value), 20),
+    []
+  );
+
+  const handleScroll = useCallback(() => {
+    const left = wrapperRef.current?.scrollLeft ?? 0;
+    throttledSetScroll(left);
+  }, [throttledSetScroll]);
+
   const getItemWidths = useCallback(() => {
     return itemRefs.current.map((el) => el?.offsetWidth ?? 0);
   }, []);
@@ -59,12 +78,6 @@ export const ScrollCarousel: React.FC<ScrollCarouselProps> = ({
     []
   );
 
-  // Sync scroll position
-  const handleScroll = () => {
-    setScrollPos(wrapperRef.current?.scrollLeft || 0);
-  };
-
-  // Scroll by “slidesToScroll”
   const scrollByItems = useCallback(
     (dir: "left" | "right") => {
       if (!wrapperRef.current) return;
@@ -87,6 +100,20 @@ export const ScrollCarousel: React.FC<ScrollCarouselProps> = ({
     },
     [scrollPos, maxScroll, slidesToShow, slidesToScroll, gap]
   );
+
+  const scrollScale = useMemo(
+    () => getScrollScale(items.length, slidesToShow, itemWidth),
+    [items.length, itemWidth, slidesToShow]
+  );
+
+  useScrollSnapToItem({
+    wrapperRef,
+    items,
+    maxScroll,
+    itemWidth,
+    scrollScale,
+    scrollPos,
+  });
 
   return (
     <div className={`${styles.root} ${className}`}>
