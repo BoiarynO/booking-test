@@ -1,0 +1,13 @@
+.arrow {
+  border-radius: 6px;
+  background: transparent;
+  border: none;
+  cursor: pointer;
+  font-size: 18px;
+  transition: 0.2s ease;
+}
+
+.disabled {
+  opacity: 0.3;
+  cursor: default;
+}
