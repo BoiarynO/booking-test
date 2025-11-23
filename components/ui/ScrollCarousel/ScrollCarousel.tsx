@@ -1,20 +1,14 @@
-import React, {
-  useRef,
-  useState,
-  useCallback,
-  useMemo,
-  useEffect,
-} from "react";
+import React, { useRef, useState, useCallback, useMemo } from "react";
+
+import { throttle } from "@/utils/throttle";
 
 import styles from "./ScrollCarousel.module.css";
-import { NextArrow, PrevArrow } from "./components/Arrows";
-import { useAutoGap } from "./hooks/useAitoGap";
 import { useDragScroll } from "./hooks/useDragScroll";
 import { useMeasurements } from "./hooks/useMeasurements";
-import { throttle } from "@/utils/throttle";
-import findNearestItemInArray from "@/utils/findNearestItemInArray";
 import { getScrollScale } from "./getScrollScale";
-import useScrollSnapToItem from "./hooks/useScrollSnapToItem";
+import { useAutoGap } from "./hooks/useAutoGap";
+import { useScrollSnapToItem } from "./hooks/useScrollSnapToItem";
+import { ArrowNext, ArrowPrev } from "./arrows";
 
 type ScrollCarouselProps = {
   items: React.ReactNode[];
@@ -118,10 +112,10 @@ export const ScrollCarousel: React.FC<ScrollCarouselProps> = ({
   return (
     <div className={`${styles.root} ${className}`}>
       {arrows && (
-        <PrevArrow
+        <ArrowPrev
           onClick={() => scrollByItems("left")}
           disabled={scrollPos <= 2}
-          className={prevArrowClassname}
+          customClassName={prevArrowClassname}
         />
       )}
 
@@ -152,10 +146,10 @@ export const ScrollCarousel: React.FC<ScrollCarouselProps> = ({
       </div>
 
       {arrows && (
-        <NextArrow
+        <ArrowNext
           onClick={() => scrollByItems("right")}
           disabled={scrollPos >= maxScroll - 2}
-          className={nextArrowClassname}
+          customClassName={nextArrowClassname}
         />
       )}
     </div>

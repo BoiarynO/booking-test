@@ -3,13 +3,13 @@ import Image from "next/image";
 
 import ImageDesktop from "@/assets/images/ImageDesktop.webp";
 
-import BookingCardHeader from "../BookingCardHeader";
-import BookingCardContent from "../BookingCardContent";
 import Container from "../ui/Container";
 
-import styles from "./BookingWrapper.module.css";
+import BookingCardHeader from "./BookingCardHeader";
+import BookingCardContent from "./BookingCardContent";
+import styles from "./BookingBlock.module.css";
 
-const BookingWrapper: React.FC = () => {
+const BookingBlock: React.FC = () => {
   return (
     <Container className={styles.wrapper}>
       <div className={styles.card}>
@@ -33,4 +33,4 @@ const BookingWrapper: React.FC = () => {
   );
 };
 
-export default BookingWrapper;
+export default BookingBlock;

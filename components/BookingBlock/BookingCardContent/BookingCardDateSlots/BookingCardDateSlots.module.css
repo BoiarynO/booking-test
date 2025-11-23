@@ -1,0 +1,15 @@
+.root {
+  width: 100%;
+}
+
+.prevArrow,
+.nextArrow {
+  transform: translateY(12px);
+}
+
+@media (min-width: 568px) {
+  .root {
+    width: 100%;
+    margin: 0 auto;
+  }
+}

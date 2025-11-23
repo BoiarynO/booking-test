@@ -1,9 +1,8 @@
 import React from "react";
 
-import BookingCardDateSlots from "../BookingCardDateSlots";
-import BookingCardTimeSlots from "../BookingCardTimeSlots";
-import ConfirmButton from "../ConfirmButton";
-
+import ConfirmButton from "./ConfirmButton";
+import BookingCardDateSlots from "./BookingCardDateSlots";
+import BookingCardTimeSlots from "./BookingCardTimeSlots";
 import styles from "./BookingCardContent.module.css";
 
 const BookingCardContent: React.FC = () => {

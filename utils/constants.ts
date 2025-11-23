@@ -1,0 +1,13 @@
+export const MOBILE_WIDTH = 568;
+
+export const SLIDES_TO_SHOW_DATES_DESKTOP = 6;
+export const SLIDES_TO_SHOW_TIMES_DESKTOP = 5;
+
+export const SLIDES_TO_SHOW_DATES_MOBILE = 5.3;
+export const SLIDES_TO_SHOW_TIMES_MOBILE = 4.2;
+
+export const SLIDES_TO_SCROLL_DATES_DESKTOP = 3;
+export const SLIDES_TO_SCROLL_TIMES_DESKTOP = 2;
+
+export const SLIDES_TO_SCROLL_DATES_MOBILE = 1;
+export const SLIDES_TO_SCROLL_TIMES_MOBILE = 1;

@@ -1,6 +1,6 @@
 import classnames from "classnames";
 
-import styles from "./BookingCardDateSlots.module.css";
+import styles from "./DateSlot.module.css";
 
 type DateSlotProps = {
   id: string;
@@ -8,7 +8,7 @@ type DateSlotProps = {
   weekDay: string;
   day: string;
   timestamp: number;
-  selected: number;
+  selected: number | null;
   setSelected: (time: number | null) => void;
   setSelectedTime: (time: number | null) => void;
   isMonth: boolean;

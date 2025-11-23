@@ -1,30 +1,8 @@
-.root {
-  width: 100%;
-  /* margin: 0 auto; */
-}
-
 .slideWrapper {
   display: flex;
   flex-direction: column;
   justify-content: flex-end;
   align-items: flex-start;
-}
-
-.month {
-  color: var(--secondary-text-color);
-  margin-bottom: 8px;
-  font-family: Poppins;
-  font-weight: 400;
-  font-style: Regular;
-  font-size: 14px;
-  line-height: 100%;
-  letter-spacing: 0px;
-  vertical-align: middle;
-  visibility: hidden;
-}
-
-.visible {
-  visibility: visible;
 }
 
 .button {
@@ -33,33 +11,21 @@
   align-items: center;
   justify-content: center;
   background: var(--commonWhite);
-  border-radius: 8px;
+  border-radius: 100px;
   cursor: pointer;
   transition: transform 0.12s ease, background 0.12s;
   border: 1px solid var(--border-color);
   color: #000;
-  width: 64px;
-  height: 64px;
+  width: 80px;
+  height: 45px;
 }
 
-.weekDay {
+.label {
   color: var(--primary-text-color);
   font-family: Poppins;
   font-weight: 400;
   font-style: Medium;
-  font-size: 16px;
-  line-height: 100%;
-  letter-spacing: 0px;
-  text-align: center;
-  vertical-align: middle;
-}
-
-.day {
-  color: var(--primary-text-color);
-  font-family: Poppins;
-  font-weight: 400;
-  font-style: Regular;
-  font-size: 16px;
+  font-size: 14px;
   line-height: 100%;
   letter-spacing: 0px;
   text-align: center;
@@ -68,24 +34,23 @@
 
 .active {
   background: var(--grey-background-color);
-  color: var(--accent-text-color);
   border: none;
 }
 
-.active .weekDay,
-.active .day {
+.active .label {
   color: var(--accent-text-color);
   font-weight: 500;
 }
 
-.prevArrow,
-.nextArrow {
-  transform: translateY(12px);
+.button:disabled {
+  color: var(--secondary-text-color);
+  cursor: default;
+  pointer-events: none;
+  opacity: 0.3;
 }
 
 @media (min-width: 568px) {
   .root {
-    /* padding: 0px 12px; */
     width: 100%;
     margin: 0 auto;
   }

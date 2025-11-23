@@ -2,8 +2,7 @@ import Image from "next/image";
 
 import ImageMobile from "@/assets/images/ImageMobile.webp";
 
-import DurationLabel from "../ui/DurationLabel";
-
+import DurationLabel from "./DurationLabel";
 import styles from "./Hero.module.css";
 
 type HeroProps = {

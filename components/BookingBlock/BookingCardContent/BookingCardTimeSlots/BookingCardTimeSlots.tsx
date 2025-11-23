@@ -2,9 +2,16 @@ import React, { useMemo } from "react";
 
 import { getTimeSlots } from "@/utils/getTimeSlots";
 import useBookingStore, { BookingState } from "@/state/useBookingStore";
-import useWindowWidth from "@/utils/hooks/useWindowWidth";
+import useWindowWidth from "@/hooks/useWindowWidth";
+import {
+  MOBILE_WIDTH,
+  SLIDES_TO_SCROLL_TIMES_DESKTOP,
+  SLIDES_TO_SCROLL_TIMES_MOBILE,
+  SLIDES_TO_SHOW_TIMES_DESKTOP,
+  SLIDES_TO_SHOW_TIMES_MOBILE,
+} from "@/utils/constants";
 
-import ScrollCarousel from "../ui/ScrollCarousel/ScrollCarousel";
+import ScrollCarousel from "../../../ui/ScrollCarousel/ScrollCarousel";
 
 import styles from "./BookingCardTimeSlots.module.css";
 import TimeSlot from "./TimeSlot";
@@ -35,9 +42,15 @@ const BookingCardTimeSlots: React.FC = () => {
     );
   });
 
-  const slidesToShow = width < 568 ? 4.2 : 5;
-  const slidesToScroll = width < 568 ? 1 : 2;
-  const arrows = width > 568;
+  const slidesToShow =
+    width < MOBILE_WIDTH
+      ? SLIDES_TO_SHOW_TIMES_MOBILE
+      : SLIDES_TO_SHOW_TIMES_DESKTOP;
+  const slidesToScroll =
+    width < MOBILE_WIDTH
+      ? SLIDES_TO_SCROLL_TIMES_MOBILE
+      : SLIDES_TO_SCROLL_TIMES_DESKTOP;
+  const arrows = width > MOBILE_WIDTH;
 
   return (
     <div className={styles.root}>

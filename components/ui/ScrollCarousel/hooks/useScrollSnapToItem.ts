@@ -2,7 +2,7 @@ import { useEffect } from "react";
 
 import findNearestItemInArray from "@/utils/findNearestItemInArray";
 
-const useScrollSnapToItem = ({
+export const useScrollSnapToItem = ({
   wrapperRef,
   items,
   maxScroll,
@@ -47,5 +47,3 @@ const useScrollSnapToItem = ({
     };
   }, [scrollPos, items?.length, maxScroll, itemWidth, scrollScale, wrapperRef]);
 };
-
-export default useScrollSnapToItem;

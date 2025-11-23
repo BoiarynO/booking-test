@@ -1,13 +1,20 @@
 import React, { useMemo } from "react";
-import classnames from "classnames";
 
 import useBookingStore, { BookingState } from "@/state/useBookingStore";
 import { getDatesArray } from "@/utils/getDatesArray";
-import useWindowWidth from "@/utils/hooks/useWindowWidth";
+import useWindowWidth from "@/hooks/useWindowWidth";
+import {
+  MOBILE_WIDTH,
+  SLIDES_TO_SCROLL_DATES_DESKTOP,
+  SLIDES_TO_SCROLL_DATES_MOBILE,
+  SLIDES_TO_SHOW_DATES_DESKTOP,
+  SLIDES_TO_SHOW_DATES_MOBILE,
+} from "@/utils/constants";
 
-import ScrollCarousel from "../ui/ScrollCarousel/ScrollCarousel";
+import ScrollCarousel from "../../../ui/ScrollCarousel/ScrollCarousel";
 
 import styles from "./BookingCardDateSlots.module.css";
+import DateSlot from "./DateSlot";
 
 const BookingCardDateSlots: React.FC = () => {
   const width = useWindowWidth();
@@ -25,35 +32,32 @@ const BookingCardDateSlots: React.FC = () => {
     const isMonth = +dates[index + 1]?.day === 1 || +day === 1;
 
     return (
-      <div key={id} className={styles.slideWrapper}>
-        {
-          <div
-            className={classnames(styles.month, {
-              [styles.visible]: isMonth,
-            })}
-          >
-            {month}
-          </div>
-        }
-        <button
-          className={classnames(styles.button, {
-            [styles.active]: selected === timestamp,
-          })}
-          onClick={() => {
-            setSelected(timestamp);
-            setSelectedTime(null);
-          }}
-        >
-          <div className={styles.weekDay}>{weekDay}</div>
-          <div className={styles.day}>{day}</div>
-        </button>
-      </div>
+      <DateSlot
+        key={id}
+        {...{
+          id,
+          month,
+          weekDay,
+          day,
+          timestamp,
+          selected,
+          setSelected,
+          setSelectedTime,
+          isMonth,
+        }}
+      />
     );
   });
 
-  const slidesToShow = width < 568 ? 5.3 : 6;
-  const slidesToScroll = width < 568 ? 1 : 3;
-  const arrows = width > 568;
+  const slidesToShow =
+    width < MOBILE_WIDTH
+      ? SLIDES_TO_SHOW_DATES_MOBILE
+      : SLIDES_TO_SHOW_DATES_DESKTOP;
+  const slidesToScroll =
+    width < MOBILE_WIDTH
+      ? SLIDES_TO_SCROLL_DATES_MOBILE
+      : SLIDES_TO_SCROLL_DATES_DESKTOP;
+  const arrows = width > MOBILE_WIDTH;
 
   return (
     <div className={styles.root}>

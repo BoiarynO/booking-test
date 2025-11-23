@@ -1,6 +1,6 @@
 import React from "react";
 
-import MainPage from "../components/MainPage";
+import MainPage from "@/pages/views/MainPage";
 
 const HomePage: React.FC = () => {
   return <MainPage />;

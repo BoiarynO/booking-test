@@ -1,8 +1,8 @@
 import React from "react";
 
-import SiteHeader from "../SiteHeader";
-import BookingWrapper from "../BookingWrapper";
-import Hero from "../Hero";
+import Hero from "@/components/Hero";
+import SiteHeader from "@/components/SiteHeader";
+import BookingBlock from "@/components/BookingBlock";
 
 import styles from "./MainPage.module.css";
 
@@ -12,7 +12,7 @@ const MainPage: React.FC = () => {
       <SiteHeader />
       <Hero />
       <main className={styles.mainArea}>
-        <BookingWrapper />
+        <BookingBlock />
       </main>
     </div>
   );

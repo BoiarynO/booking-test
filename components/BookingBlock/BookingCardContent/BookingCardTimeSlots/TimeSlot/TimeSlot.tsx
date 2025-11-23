@@ -1,6 +1,6 @@
 import classnames from "classnames";
 
-import styles from "./BookingCardTimeSlots.module.css";
+import styles from "./TimeSlot.module.css";
 
 type TimeSlotProps = {
   value: string;
