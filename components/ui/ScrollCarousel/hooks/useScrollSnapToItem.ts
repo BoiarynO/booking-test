@@ -8,14 +8,14 @@ export const useScrollSnapToItem = ({
   maxScroll,
   itemWidth,
   scrollScale,
-  scrollPos,
+  scrollPosition,
 }: {
   wrapperRef: React.RefObject<HTMLDivElement | null>;
   items: React.ReactNode[];
   maxScroll: number;
   itemWidth: number;
   scrollScale: number[];
-  scrollPos: number;
+  scrollPosition: number;
 }) => {
   useEffect(() => {
     if (!items?.length || !maxScroll || !itemWidth) {
@@ -27,7 +27,7 @@ export const useScrollSnapToItem = ({
       const nearestCoordinate = findNearestItemInArray(
         scrollScale,
         (item: number) => item,
-        scrollPos
+        scrollPosition
       );
 
       if (nearestCoordinate === scrollScale[scrollScale.length - 1]) {
@@ -45,5 +45,12 @@ export const useScrollSnapToItem = ({
         clearTimeout(timer);
       }
     };
-  }, [scrollPos, items?.length, maxScroll, itemWidth, scrollScale, wrapperRef]);
+  }, [
+    scrollPosition,
+    items?.length,
+    maxScroll,
+    itemWidth,
+    scrollScale,
+    wrapperRef,
+  ]);
 };

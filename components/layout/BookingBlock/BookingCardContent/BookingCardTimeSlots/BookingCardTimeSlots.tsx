@@ -11,7 +11,7 @@ import {
   SLIDES_TO_SHOW_TIMES_MOBILE,
 } from "@/utils/constants";
 
-import ScrollCarousel from "../../../ui/ScrollCarousel/ScrollCarousel";
+import ScrollCarousel from "../../../../ui/ScrollCarousel/ScrollCarousel";
 
 import styles from "./BookingCardTimeSlots.module.css";
 import TimeSlot from "./TimeSlot";

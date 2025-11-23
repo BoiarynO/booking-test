@@ -21,6 +21,8 @@ type ScrollCarouselProps = {
   prevArrowClassname?: string;
 };
 
+const defaultGap = 12;
+
 export const ScrollCarousel: React.FC<ScrollCarouselProps> = ({
   items,
   slidesToShow = 6,
@@ -33,18 +35,22 @@ export const ScrollCarousel: React.FC<ScrollCarouselProps> = ({
   const wrapperRef = useRef<HTMLDivElement | null>(null);
   const itemRefs = useRef<HTMLDivElement[] | null[]>([]);
 
-  const [scrollPos, setScrollPos] = useState(0);
+  const [scrollPosition, setScrollPosition] = useState(0);
 
   const [firstItem, setFirstItem] = useState<HTMLDivElement | null>(null);
 
   const [itemWidth, autoGap] = useAutoGap(wrapperRef, firstItem, slidesToShow);
-  const gap = autoGap ?? 12;
+  const gap = autoGap ?? defaultGap;
   const lastItemMargin = gap * 2;
+
+  const getLastItemMargin = (index: number) => {
+    return index === items.length - 1 && !arrows ? lastItemMargin : 0;
+  };
 
   const { onMouseDown, onMouseMove, endDrag } = useDragScroll(wrapperRef);
 
   const throttledSetScroll = useMemo(
-    () => throttle((value: number) => setScrollPos(value), 20),
+    () => throttle((value: number) => setScrollPosition(value), 20),
     []
   );
 
@@ -73,26 +79,26 @@ export const ScrollCarousel: React.FC<ScrollCarouselProps> = ({
   );
 
   const scrollByItems = useCallback(
-    (dir: "left" | "right") => {
+    (direction: "left" | "right") => {
       if (!wrapperRef.current) return;
 
       let delta = 0;
       const count = slidesToScroll;
 
       for (let i = 0; i < count; i++) {
-        const idx = dir === "right" ? slidesToShow + i : i;
-        const w = itemRefs.current[idx]?.offsetWidth || 0;
-        delta += w + gap;
+        const idx = direction === "right" ? slidesToShow + i : i;
+        const width = itemRefs.current[idx]?.offsetWidth || 0;
+        delta += width + gap;
       }
 
       const target =
-        dir === "right"
-          ? Math.min(scrollPos + delta, maxScroll)
-          : Math.max(scrollPos - delta, 0);
+        direction === "right"
+          ? Math.min(scrollPosition + delta, maxScroll)
+          : Math.max(scrollPosition - delta, 0);
 
       wrapperRef.current.scrollTo({ left: target, behavior: "smooth" });
     },
-    [scrollPos, maxScroll, slidesToShow, slidesToScroll, gap]
+    [scrollPosition, maxScroll, slidesToShow, slidesToScroll, gap]
   );
 
   const scrollScale = useMemo(
@@ -106,7 +112,7 @@ export const ScrollCarousel: React.FC<ScrollCarouselProps> = ({
     maxScroll,
     itemWidth,
     scrollScale,
-    scrollPos,
+    scrollPosition,
   });
 
   return (
@@ -114,7 +120,7 @@ export const ScrollCarousel: React.FC<ScrollCarouselProps> = ({
       {arrows && (
         <ArrowPrev
           onClick={() => scrollByItems("left")}
-          disabled={scrollPos <= 2}
+          disabled={scrollPosition <= 2}
           customClassName={prevArrowClassname}
         />
       )}
@@ -134,8 +140,7 @@ export const ScrollCarousel: React.FC<ScrollCarouselProps> = ({
               key={i}
               className={styles.item}
               style={{
-                marginRight:
-                  i === items.length - 1 && !arrows ? lastItemMargin : 0,
+                marginRight: getLastItemMargin(i),
               }}
               ref={setItemRef(i)}
             >
@@ -148,7 +153,7 @@ export const ScrollCarousel: React.FC<ScrollCarouselProps> = ({
       {arrows && (
         <ArrowNext
           onClick={() => scrollByItems("right")}
-          disabled={scrollPos >= maxScroll - 2}
+          disabled={scrollPosition >= maxScroll - 2}
           customClassName={nextArrowClassname}
         />
       )}

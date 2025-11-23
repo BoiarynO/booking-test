@@ -1,8 +1,8 @@
 import React from "react";
 
-import Hero from "@/components/Hero";
-import SiteHeader from "@/components/SiteHeader";
-import BookingBlock from "@/components/BookingBlock";
+import Hero from "@/components/layout/Hero";
+import SiteHeader from "@/components/layout/SiteHeader";
+import BookingBlock from "@/components/layout/BookingBlock";
 
 import styles from "./MainPage.module.css";
 

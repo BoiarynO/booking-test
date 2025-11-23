@@ -11,7 +11,7 @@ import {
   SLIDES_TO_SHOW_DATES_MOBILE,
 } from "@/utils/constants";
 
-import ScrollCarousel from "../../../ui/ScrollCarousel/ScrollCarousel";
+import ScrollCarousel from "../../../../ui/ScrollCarousel/ScrollCarousel";
 
 import styles from "./BookingCardDateSlots.module.css";
 import DateSlot from "./DateSlot";

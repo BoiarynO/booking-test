@@ -3,7 +3,7 @@ import Image from "next/image";
 
 import ImageDesktop from "@/assets/images/ImageDesktop.webp";
 
-import Container from "../ui/Container";
+import Container from "../../ui/Container";
 
 import BookingCardHeader from "./BookingCardHeader";
 import BookingCardContent from "./BookingCardContent";
