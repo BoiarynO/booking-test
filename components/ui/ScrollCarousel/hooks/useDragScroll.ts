@@ -12,7 +12,9 @@ export const useDragScroll = (ref: React.RefObject<HTMLDivElement | null>) => {
   };
 
   const onMouseMove = (e: React.MouseEvent) => {
-    if (!drag.current || !ref.current) return;
+    if (!drag.current || !ref.current) {
+      return;
+    }
     ref.current.scrollLeft = startScroll.current - (e.pageX - startX.current);
   };
 

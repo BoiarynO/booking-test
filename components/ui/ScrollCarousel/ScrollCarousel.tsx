@@ -80,7 +80,9 @@ export const ScrollCarousel: React.FC<ScrollCarouselProps> = ({
 
   const scrollByItems = useCallback(
     (direction: "left" | "right") => {
-      if (!wrapperRef.current) return;
+      if (!wrapperRef.current) {
+        return;
+      }
 
       let delta = 0;
       const count = slidesToScroll;

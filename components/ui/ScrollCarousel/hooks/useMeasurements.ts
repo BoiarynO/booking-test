@@ -25,7 +25,10 @@ export const useMeasurements = (
 
     measure();
     window.addEventListener("resize", measure);
-    return () => window.removeEventListener("resize", measure);
+
+    return () => {
+      window.removeEventListener("resize", measure);
+    };
   }, [wrapperRef, gap, count, getItemWidths]);
 
   return maxScroll;

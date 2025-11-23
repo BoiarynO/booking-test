@@ -9,7 +9,9 @@ export const useAutoGap = (
   const [itemFullWidth, setItemFullWidth] = useState<number>(0);
 
   useEffect(() => {
-    if (!wrapperRef.current || !firstItemRef) return;
+    if (!wrapperRef.current || !firstItemRef) {
+      return;
+    }
 
     const compute = () => {
       const containerWidth = wrapperRef.current!.offsetWidth ?? 0;
@@ -23,7 +25,10 @@ export const useAutoGap = (
 
     compute();
     window.addEventListener("resize", compute);
-    return () => window.removeEventListener("resize", compute);
+
+    return () => {
+      window.removeEventListener("resize", compute);
+    };
   }, [slidesToShow, firstItemRef, wrapperRef]);
 
   return [itemFullWidth, gap];

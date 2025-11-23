@@ -37,7 +37,9 @@ export default function findNearestItemInArray<T>(
     });
   }
 
-  if (candidates.length === 0) return undefined;
+  if (candidates.length === 0) {
+    return undefined;
+  }
 
   candidates.sort((a, b) => a.diff - b.diff);
 
