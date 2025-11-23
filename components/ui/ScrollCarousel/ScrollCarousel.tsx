@@ -5,7 +5,7 @@ import { throttle } from "@/utils/throttle";
 import styles from "./ScrollCarousel.module.css";
 import { useDragScroll } from "./hooks/useDragScroll";
 import { useMeasurements } from "./hooks/useMeasurements";
-import { getScrollScale } from "./getScrollScale";
+import { getScrollScale } from "./utils/getScrollScale";
 import { useAutoGap } from "./hooks/useAutoGap";
 import { useScrollSnapToItem } from "./hooks/useScrollSnapToItem";
 import { ArrowNext, ArrowPrev } from "./arrows";

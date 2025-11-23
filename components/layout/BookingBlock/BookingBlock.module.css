@@ -1,9 +1,14 @@
-.wrapper {
-  width: 100%;
+.container {
+  position: relative;
+  z-index: 1;
+
   display: flex;
-  align-items: center;
   justify-content: center;
-  margin-top: 40px !important;
+  align-items: center;
+
+  max-width: 568px;
+  width: 100%;
+  margin: 40px auto 0;
 }
 
 .card {

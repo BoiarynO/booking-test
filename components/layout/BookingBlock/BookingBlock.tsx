@@ -3,15 +3,13 @@ import Image from "next/image";
 
 import ImageDesktop from "@/assets/images/ImageDesktop.webp";
 
-import Container from "../../ui/Container";
-
 import BookingCardHeader from "./BookingCardHeader";
 import BookingCardContent from "./BookingCardContent";
 import styles from "./BookingBlock.module.css";
 
 const BookingBlock: React.FC = () => {
   return (
-    <Container className={styles.wrapper}>
+    <section className={styles.container}>
       <div className={styles.card}>
         <div className={styles.upperBlock}>
           <Image
@@ -29,7 +27,7 @@ const BookingBlock: React.FC = () => {
           <BookingCardContent />
         </div>
       </div>
-    </Container>
+    </section>
   );
 };
 
