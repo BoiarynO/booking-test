@@ -6,6 +6,7 @@
   border-radius: 40px;
   font-weight: 600;
   min-width: 100%;
+  cursor: pointer;
 }
 
 .btn p {
