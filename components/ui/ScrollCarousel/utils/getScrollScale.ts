@@ -4,7 +4,7 @@ export function getScrollScale(
   itemWidth: number = 0
 ): number[] {
   if (!length || !slidesToShow || !itemWidth) return [];
-  return Array.from({ length: length - slidesToShow + 1 }).map(
+  return Array.from({ length: length - Math.floor(slidesToShow) + 1 }).map(
     (_, i) => i * itemWidth
   );
 }
