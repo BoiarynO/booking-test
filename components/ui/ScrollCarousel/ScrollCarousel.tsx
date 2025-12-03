@@ -4,9 +4,9 @@ import { throttle } from "@/utils/throttle";
 
 import styles from "./ScrollCarousel.module.css";
 import { useDragScroll } from "./hooks/useDragScroll";
-import { useMeasurements } from "./hooks/useMeasurements";
+import { useMaxScrollWidth } from "./hooks/useMaxScrollWidth";
 import { getScrollScale } from "./utils/getScrollScale";
-import { useAutoGap } from "./hooks/useAutoGap";
+import { useItemSizes } from "./hooks/useItemSizes";
 import { useScrollSnapToItem } from "./hooks/useScrollSnapToItem";
 import { ArrowNext, ArrowPrev } from "./arrows";
 
@@ -39,7 +39,11 @@ export const ScrollCarousel: React.FC<ScrollCarouselProps> = ({
 
   const [firstItem, setFirstItem] = useState<HTMLDivElement | null>(null);
 
-  const [itemWidth, autoGap] = useAutoGap(wrapperRef, firstItem, slidesToShow);
+  const [itemWidth, autoGap] = useItemSizes(
+    wrapperRef,
+    firstItem,
+    slidesToShow
+  );
   const gap = autoGap ?? defaultGap;
   const lastItemMargin = gap * 2;
 
@@ -63,7 +67,7 @@ export const ScrollCarousel: React.FC<ScrollCarouselProps> = ({
     return itemRefs.current.map((el) => el?.offsetWidth ?? 0);
   }, []);
 
-  const maxScroll = useMeasurements(
+  const maxScroll = useMaxScrollWidth(
     wrapperRef,
     getItemWidths,
     gap,

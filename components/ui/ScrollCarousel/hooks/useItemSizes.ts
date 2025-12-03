@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 
-export const useAutoGap = (
+export const useItemSizes = (
   wrapperRef: React.RefObject<HTMLDivElement | null>,
   firstItemRef: HTMLDivElement | null,
   slidesToShow: number

@@ -1,6 +1,6 @@
 import { useLayoutEffect, useState } from "react";
 
-export const useMeasurements = (
+export const useMaxScrollWidth = (
   wrapperRef: React.RefObject<HTMLDivElement | null>,
   getItemWidths: () => number[],
   gap: number,
@@ -10,8 +10,6 @@ export const useMeasurements = (
 
   useLayoutEffect(() => {
     if (!wrapperRef.current) {
-      // eslint-disable-next-line react-hooks/set-state-in-effect
-      setMaxScroll(0);
       return;
     }
 

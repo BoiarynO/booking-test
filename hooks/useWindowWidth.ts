@@ -8,10 +8,8 @@ const useWindowWidth = () => {
       const width = typeof window !== "undefined" ? window.innerWidth : 0;
       setWidth(width);
     };
-    const width = typeof window !== "undefined" ? window.innerWidth : 0;
 
-    // eslint-disable-next-line react-hooks/set-state-in-effect
-    setWidth(width);
+    handleResize();
 
     window.addEventListener("resize", handleResize);
 
