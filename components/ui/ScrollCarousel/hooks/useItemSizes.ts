@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+import { useLayoutEffect, useState } from "react";
 
 export const useItemSizes = (
   wrapperRef: React.RefObject<HTMLDivElement | null>,
@@ -8,7 +8,7 @@ export const useItemSizes = (
   const [gap, setGap] = useState<number>(0);
   const [itemFullWidth, setItemFullWidth] = useState<number>(0);
 
-  useEffect(() => {
+  useLayoutEffect(() => {
     if (!wrapperRef.current || !firstItemRef) {
       return;
     }

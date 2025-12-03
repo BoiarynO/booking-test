@@ -1,4 +1,5 @@
 .root {
+  min-height: var(--time-slot-min-height);
   width: 100%;
 }
 

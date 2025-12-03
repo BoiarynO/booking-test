@@ -1,8 +1,9 @@
+"use client";
 import React, { useMemo } from "react";
+import dynamic from "next/dynamic";
 
 import { getTimeSlots } from "@/utils/getTimeSlots";
 import useBookingStore, { BookingState } from "@/state/useBookingStore";
-import useWindowWidth from "@/hooks/useWindowWidth";
 import {
   MOBILE_WIDTH,
   SLIDES_TO_SCROLL_TIMES_DESKTOP,
@@ -10,8 +11,12 @@ import {
   SLIDES_TO_SHOW_TIMES_DESKTOP,
   SLIDES_TO_SHOW_TIMES_MOBILE,
 } from "@/utils/constants";
+import { useWindowWidth } from "@/hooks/useWindowWidth";
 
-import ScrollCarousel from "../../../../ui/ScrollCarousel/ScrollCarousel";
+const ScrollCarousel = dynamic(
+  () => import("../../../../ui/ScrollCarousel/ScrollCarousel"),
+  { ssr: false }
+);
 
 import styles from "./BookingCardTimeSlots.module.css";
 import TimeSlot from "./TimeSlot";

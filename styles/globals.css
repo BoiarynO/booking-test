@@ -17,6 +17,9 @@
   --grey-background-color: #f7f7fc;
 
   --accent-text-color: #de3a6b;
+
+  --date-slot-min-height: 86px;
+  --time-slot-min-height: 45px;
 }
 
 html,
