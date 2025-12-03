@@ -44,7 +44,7 @@ export const ScrollCarousel: React.FC<ScrollCarouselProps> = ({
     firstItem,
     slidesToShow
   );
-  console.log(autoGap);
+
   const gap = autoGap ?? defaultGap;
   const lastItemMargin = gap * 2;
 
